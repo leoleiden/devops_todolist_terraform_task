@@ -2,35 +2,39 @@ variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
 }
+
 variable "location" {
   description = "Azure region for resources"
   type        = string
 }
-variable "virtual_network_name" {
-  description = "Name of the Virtual Network"
+
+variable "vm_name" {
+  description = "Name of the virtual machine"
   type        = string
 }
-variable "vnet_address_prefix" {
-  description = "Address prefix for the Virtual Network"
-  type        = list(string) # ЗМІНЕНО: тепер list(string)
-}
-variable "subnet_name" {
-  description = "Name of the Subnet"
+
+variable "vm_size" {
+  description = "Size of the virtual machine"
   type        = string
 }
-variable "subnet_address_prefix" {
-  description = "Address prefix for the Subnet"
-  type        = list(string) # ЗМІНЕНО: тепер list(string)
+
+variable "ssh_key_public" {
+  description = "Public SSH key for the virtual machine"
+  type        = string
+  sensitive   = true
 }
-variable "network_security_group_name" {
-  description = "Name of the Network Security Group"
+
+variable "subnet_id" {
+  description = "ID of the subnet to connect the VM to"
   type        = string
 }
-variable "public_ip_address_name" {
-  description = "Name of the Public IP Address"
+
+variable "public_ip_id" {
+  description = "ID of the public IP address to associate with the VM"
   type        = string
 }
-variable "dns_label" {
-  description = "DNS label for the Public IP Address"
+
+variable "script_url" {
+  description = "URL of the script to execute on the VM"
   type        = string
 }
