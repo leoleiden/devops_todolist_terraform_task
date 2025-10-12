@@ -34,6 +34,12 @@ variable "public_ip_id" {
   type        = string
 }
 
+# Added variable for the Network Security Group ID.
+variable "nsg_id" {
+  description = "ID of the Network Security Group to associate with the NIC"
+  type        = string
+}
+
 variable "script_url" {
   description = "URL of the script to execute on the VM"
   type        = string
