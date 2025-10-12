@@ -15,7 +15,7 @@ variable "virtual_network_name" {
 
 variable "vnet_address_prefix" {
   description = "Префікс адреси для віртуальної мережі."
-  type        = string
+  type        = list(string)
 }
 
 variable "subnet_name" {
@@ -25,7 +25,7 @@ variable "subnet_name" {
 
 variable "subnet_address_prefix" {
   description = "Префікс адреси для підмережі."
-  type        = string
+  type        = list(string)
 }
 
 variable "network_security_group_name" {
