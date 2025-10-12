@@ -1,3 +1,4 @@
+# Creates the Network Interface for the VM and associates the NSG.
 resource "azurerm_network_interface" "main" {
   name                = "${var.vm_name}-nic"
   location            = var.location
@@ -11,6 +12,21 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
+# Associates the Network Security Group with the Network Interface.
+resource "azurerm_network_interface_security_group_association" "main" {
+  network_interface_id      = azurerm_network_interface.main.id
+  network_security_group_id = var.nsg_id
+}
+
+# Creates the SSH public key resource as required by the task.
+resource "azurerm_ssh_public_key" "main" {
+  name                = "linuxboxsshkey"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  public_key          = var.ssh_key_public
+}
+
+# Creates the Linux Virtual Machine.
 resource "azurerm_linux_virtual_machine" "main" {
   name                  = var.vm_name
   resource_group_name   = var.resource_group_name
@@ -21,7 +37,7 @@ resource "azurerm_linux_virtual_machine" "main" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = var.ssh_key_public
+    public_key = azurerm_ssh_public_key.main.public_key
   }
 
   os_disk {
@@ -37,6 +53,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 }
 
+# Creates the VM extension to download and execute the installation script.
 resource "azurerm_virtual_machine_extension" "main" {
   name                 = "${var.vm_name}-install-app"
   virtual_machine_id   = azurerm_linux_virtual_machine.main.id
@@ -45,8 +62,9 @@ resource "azurerm_virtual_machine_extension" "main" {
   type_handler_version = "2.0"
 
   settings = <<SETTINGS
-    {
-      "script": "${var.script_url}"
-    }
+{
+  "fileUris": ["${var.script_url}"],
+  "commandToExecute": "bash install-app.sh"
+}
 SETTINGS
 }
