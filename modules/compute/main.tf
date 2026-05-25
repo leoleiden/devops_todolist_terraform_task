@@ -32,11 +32,11 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name   = var.resource_group_name
   location              = var.location
   size                  = var.vm_size
-  admin_username        = "adminuser"
+  admin_username        = "azureuser"
   network_interface_ids = [azurerm_network_interface.main.id]
 
   admin_ssh_key {
-    username   = "adminuser"
+    username   = "azureuser"
     public_key = azurerm_ssh_public_key.main.public_key
   }
 
