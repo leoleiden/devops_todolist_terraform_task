@@ -1,0 +1,135 @@
+‘âàãªâãà  ¯ ¯®ª â®¬  Windows 10
+‘¥à¨©­ë© ­®¬¥à â®¬ : 00000056 2450:3723
+C:\USERS\LEIDENLOKI\DEVOPS_TODOLIST_TERRAFORM_TASK
+³   backend.tf
+³   files.txt
+³   image.png
+³   install-app.sh
+³   main.tf
+³   outputs.tf
+³   README.md
+³   terraform.tfvars
+³   variables.tf
+³   ¤¥à¥¢®_¯à®¥ªâ­¨å_ä ©«?¢_?_¤¨à¥ªâ®à?©.txt
+³   
+ÃÄÄÄ.github
+³   ÀÄÄÄworkflows
+³           terraform-validate.yml
+³           
+ÃÄÄÄ.terraform
+³   ³   terraform.tfstate
+³   ³   
+³   ÀÄÄÄmodules
+³           modules.json
+³           
+ÃÄÄÄapp
+³   ³   .gitignore
+³   ³   LICENSE
+³   ³   manage.py
+³   ³   README.md
+³   ³   requirements.txt
+³   ³   start.sh
+³   ³   todoapp.service
+³   ³   
+³   ÃÄÄÄaccounts
+³   ³   ³   admin.py
+³   ³   ³   forms.py
+³   ³   ³   models.py
+³   ³   ³   tests.py
+³   ³   ³   urls.py
+³   ³   ³   views.py
+³   ³   ³   __init__.py
+³   ³   ³   
+³   ³   ÃÄÄÄmigrations
+³   ³   ³       __init__.py
+³   ³   ³       
+³   ³   ÀÄÄÄtemplates
+³   ³       ÀÄÄÄaccounts
+³   ³               login.html
+³   ³               register.html
+³   ³               
+³   ÃÄÄÄapi
+³   ³   ³   serializers.py
+³   ³   ³   tests.py
+³   ³   ³   urls.py
+³   ³   ³   views.py
+³   ³   ³   __init__.py
+³   ³   ³   
+³   ³   ÀÄÄÄmigrations
+³   ³           __init__.py
+³   ³           
+³   ÃÄÄÄlists
+³   ³   ³   admin.py
+³   ³   ³   forms.py
+³   ³   ³   models.py
+³   ³   ³   tests.py
+³   ³   ³   urls.py
+³   ³   ³   views.py
+³   ³   ³   __init__.py
+³   ³   ³   
+³   ³   ÃÄÄÄmigrations
+³   ³   ³       0001_initial.py
+³   ³   ³       __init__.py
+³   ³   ³       
+³   ³   ÃÄÄÄstatic
+³   ³   ³   ÀÄÄÄlists
+³   ³   ³       ÃÄÄÄcss
+³   ³   ³       ³       table.css
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄimages
+³   ³   ³       ³       asc.gif
+³   ³   ³       ³       bg.gif
+³   ³   ³       ³       desc.gif
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄjs
+³   ³   ³               jquery.tablesorter.min.js
+³   ³   ³               lists.js
+³   ³   ³               
+³   ³   ÃÄÄÄtemplates
+³   ³   ³   ÀÄÄÄlists
+³   ³   ³           index.html
+³   ³   ³           overview.html
+³   ³   ³           todolist.html
+³   ³   ³           
+³   ³   ÀÄÄÄtemplatetags
+³   ³           lists_extras.py
+³   ³           __init__.py
+³   ³           
+³   ÀÄÄÄtodolist
+³       ³   settings.py
+³       ³   urls.py
+³       ³   wsgi.py
+³       ³   __init__.py
+³       ³   
+³       ÃÄÄÄstatic
+³       ³   ÃÄÄÄcss
+³       ³   ³       custom.css
+³       ³   ³       
+³       ³   ÃÄÄÄimages
+³       ³   ³       favicon.png
+³       ³   ³       
+³       ³   ÀÄÄÄjs
+³       ³           site.js
+³       ³           
+³       ÀÄÄÄtemplates
+³               403.html
+³               404.html
+³               500.html
+³               base.html
+³               
+ÀÄÄÄmodules
+    ÃÄÄÄcompute
+    ³       main.tf
+    ³       outputs.tf
+    ³       variables.tf
+    ³       
+    ÃÄÄÄnetwork
+    ³       main.tf
+    ³       outputs.tf
+    ³       variables.tf
+    ³       
+    ÀÄÄÄstorage
+            main.tf
+            outputs.tf
+            variables.tf
+            

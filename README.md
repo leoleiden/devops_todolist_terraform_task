@@ -89,3 +89,9 @@ To complete this task, Terraform and Azure CLI must be installed and configured 
 - Verify the application is running by visiting the public IP in a web browser.
 
 **10. Pull request's description should also contain a reference to a successful workflow run**
+### Remote state setup (Azure Blob)
+Create resource group and storage account/container for Terraform state:
+az group create -n mate-azure-task-12 -l uksouth
+az storage account create -n yourstorageaccount -g mate-azure-task-12 -l uksouth --sku Standard_LRS
+az storage container create -n tfstate --account-name yourstorageaccount
+Update backend.tf with the storage account names (do not commit secrets).

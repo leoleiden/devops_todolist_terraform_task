@@ -1,0 +1,87 @@
+*** Begin Patch
+*** Add File: .gitignore
++.terraform/
++*.tfstate
++*.tfstate.*
++terraform.tfvars
++override.tf
++override.tf.json
++crash.log
++
+*** End Patch
+*** Begin Patch
+*** Add File: terraform.tfvars.example
++ssh_key_public = "REPLACE_WITH_YOUR_SSH_PUB_KEY"
++location = "uksouth"
++resource_group_name = "mate-azure-task-12"
++vm_name = "matebox"
++vm_size = "Standard_B1s"
++dns_label = "matetask"
++
+*** End Patch
+*** Begin Patch
+*** Update File: README.md
+@@
+ ## Prerequisites
+@@
++### Remote state setup (Azure Blob)
++Create resource group and storage account/container for Terraform state:
++```
++az group create -n mate-azure-task-12 -l uksouth
++az storage account create -n yourstorageaccount -g mate-azure-task-12 -l uksouth --sku Standard_LRS
++az storage container create -n tfstate --account-name yourstorageaccount
++```
++Update `envs/dev/backend.tf` or `backend.tf` with the storage account names (do not commit secrets).
++
+*** End Patch
+*** Begin Patch
+*** Add File: .github/workflows/terraform-ci.yml
++name: Terraform CI
++
++on:
++  pull_request:
++    paths:
++      - '**.tf'
++      - '.github/workflows/**'
++
++jobs:
++  validate:
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v4
++      - name: Setup Terraform
++        uses: hashicorp/setup-terraform@v2
++        with:
++          terraform_version: 1.5.0
++      - name: Terraform fmt
++        run: terraform fmt -check -recursive
++      - name: Install tflint
++        run: |
++          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
++      - name: Run tflint
++        run: tflint --init && tflint
++      - name: Terraform init (no backend)
++        run: terraform init -backend=false
++      - name: Terraform validate
++        run: terraform validate
++      - name: Run checkov (IaC security)
++        run: |
++          pip install checkov
++          checkov -d .
++      - name: Terraform plan
++        run: terraform plan -no-color
++
+*** End Patch
+*** Begin Patch
+*** Update File: modules/network/outputs.tf
+@@
+ output "vnet_id" {
+   value = azurerm_virtual_network.vnet.id
+ }
+ output "subnet_id" {
+   value = azurerm_subnet.subnet.id
+ }
++output "public_ip_address" {
++  value = azurerm_public_ip.pip.ip_address
++}
+*** End Patch

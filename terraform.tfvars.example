@@ -1,0 +1,6 @@
+ssh_key_public = "REPLACE_WITH_YOUR_SSH_PUB_KEY"
+location = "uksouth"
+resource_group_name = "mate-azure-task-12"
+vm_name = "matebox"
+vm_size = "Standard_B1s"
+dns_label = "matetask"
